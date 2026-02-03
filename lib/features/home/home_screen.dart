@@ -1,16 +1,22 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:launcher_gf101/features/settings/wallpaper_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../core/widgets/background_mesh.dart';
 import '../apps/launcher_screen.dart';
 import '../settings/settings_screen.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final wallpaper = ref.watch(wallpaperProvider);
+
     return Scaffold(
       backgroundColor: const Color(0xFF101622),
       body: GestureDetector(
@@ -28,8 +34,16 @@ class HomeScreen extends StatelessWidget {
         },
         child: Stack(
           children: [
-            // Background Gradient Mesh
-            const BackgroundMesh(),
+            // Background
+            if (wallpaper != null)
+              Image.file(
+                wallpaper,
+                fit: BoxFit.cover,
+                width: double.infinity,
+                height: double.infinity,
+              )
+            else
+              const BackgroundMesh(),
 
             SafeArea(
               child: Padding(

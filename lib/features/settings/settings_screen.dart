@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:launcher_gf101/features/settings/wallpaper_provider.dart';
+import 'package:launcher_gf101/theme/theme_provider.dart';
 import '../../core/widgets/background_mesh.dart';
 
-class SettingsScreen extends StatelessWidget {
+class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      backgroundColor: const Color(0xFF101622),
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Stack(
         children: [
           const BackgroundMesh(),
@@ -24,9 +27,29 @@ class SettingsScreen extends StatelessWidget {
                       _buildSectionHeader('Appearance'),
                       _SettingItem(
                         icon: Icons.palette,
-                        title: 'Theme & Wallpaper',
-                        subtitle: 'Dark mode, colors, background',
-                        onTap: () {},
+                        title: 'Theme',
+                        subtitle: 'Toggle between light and dark mode',
+                        onTap: () {
+                          ref.read(themeProvider.notifier).toggleTheme();
+                        },
+                      ),
+                      const SizedBox(height: 12),
+                      _SettingItem(
+                        icon: Icons.image,
+                        title: 'Set Wallpaper',
+                        subtitle: 'Choose a background from your gallery',
+                        onTap: () {
+                          ref.read(wallpaperProvider.notifier).setWallpaper();
+                        },
+                      ),
+                      const SizedBox(height: 12),
+                      _SettingItem(
+                        icon: Icons.image_not_supported,
+                        title: 'Clear Wallpaper',
+                        subtitle: 'Remove the custom wallpaper',
+                        onTap: () {
+                          ref.read(wallpaperProvider.notifier).clearWallpaper();
+                        },
                       ),
                       const SizedBox(height: 12),
                       _SettingItem(
