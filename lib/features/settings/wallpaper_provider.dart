@@ -4,15 +4,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-final wallpaperProvider = StateNotifierProvider<WallpaperNotifier, File?>((
-  ref,
-) {
+final wallpaperProvider = NotifierProvider<WallpaperNotifier, File?>(() {
   return WallpaperNotifier();
 });
 
-class WallpaperNotifier extends StateNotifier<File?> {
-  WallpaperNotifier() : super(null) {
+class WallpaperNotifier extends Notifier<File?> {
+  @override
+  File? build() {
     _loadWallpaper();
+    return null;
   }
 
   final String _wallpaperKey = 'wallpaperPath';

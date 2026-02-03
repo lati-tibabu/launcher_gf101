@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:launcher_gf101/theme/color_schemes.dart';
+import 'color_schemes.dart';
 
 final lightTheme = ThemeData(
   useMaterial3: true,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:launcher_gf101/features/home/home_screen.dart';
-import 'package:launcher_gf101/theme/theme_provider.dart';
-import 'package:launcher_gf101/theme/themes.dart';
+import 'features/home/home_screen.dart';
+import 'theme/theme_provider.dart';
+import 'theme/themes.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));

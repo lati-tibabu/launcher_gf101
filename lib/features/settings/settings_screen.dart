@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:launcher_gf101/features/settings/wallpaper_provider.dart';
-import 'package:launcher_gf101/theme/theme_provider.dart';
+import 'wallpaper_provider.dart';
+import '../../theme/theme_provider.dart';
 import '../../core/widgets/background_mesh.dart';
 
 class SettingsScreen extends ConsumerWidget {
