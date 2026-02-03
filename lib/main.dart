@@ -5,6 +5,7 @@ import 'theme/theme_provider.dart';
 import 'theme/themes.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const ProviderScope(child: MyApp()));
 }
 
